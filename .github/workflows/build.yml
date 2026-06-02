@@ -23,8 +23,8 @@ jobs:
           echo "JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8" >> $GITHUB_ENV
 
       - name: Build with Maven
-        # 修正：添加引号包裹 -pl 参数值，避免解析错误
-        run: mvn -B clean package -DskipTests '-pl' '-hcp-register'
+        # 修正：-pl 和参数值写在一起，不要分开
+        run: mvn -B clean package -DskipTests -pl !hcp-register
 
       - name: Upload Jar artifacts
         uses: actions/upload-artifact@v4
